@@ -12,6 +12,7 @@ Answer the following questions:
 
 ## Answer
 1.
-"Also notice how doubles are compared using a precision. Floating point types should never be compared with direct equality due to numerical errors. The code can be checked here." 
+"Also notice how doubles are compared using a precision. Floating point types should never be compared with direct equality due to numerical errors. The code can be checked here." : 3.3.2. Real examples of good testing practice (https://oscarlvp.github.io/vandv-classes/)
+
 On ne peut pas comparer des floats avec un test d'égalité à cause des erreurs d'approximation. Il est conseillé de comparé les floats avec des comparateurs : > ou <, et de fixer quelle précision on veut utiliser.
 
