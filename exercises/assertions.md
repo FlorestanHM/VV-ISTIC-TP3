@@ -66,3 +66,10 @@ On peut également utiliser `fail()`pour marquer qu'une fonctionnalité n'est pa
 En général, `fail()` permet de faire échouer le test car il se retrouve dans un état non attendu, en envoyant un message d'erreur clair.
 
 4.
+Il y a plusieurs avantages à `assertThrows`: 
+
+- Rend le test plus lisible.
+- Permet de tester quand et où attendre l'erreur et quel type d'erreur avec précision.
+- Améliore le debug (plus d'informations).
+- Plus flexible, on peut utiliser une lambda pour définir le bloc de code qui doit produire une erreur.
+
