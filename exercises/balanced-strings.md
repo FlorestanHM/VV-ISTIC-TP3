@@ -26,3 +26,81 @@ Use the project in [tp3-balanced-strings](../code/tp3-balanced-strings) to compl
 
 ## Answer
 
+```java
+public static boolean isBalanced(String str) {
+    // Create an empty stack
+    Stack<Character> stack = new Stack<Character>();
+
+    // Loop through each character in the input string
+    for (char c : str.toCharArray()) {
+        // If the character is an opening symbol, push it onto the stack
+        if (c == '{' || c == '[' || c == '(') {
+            stack.push(c);
+        }
+        // If the character is a closing symbol, pop the top symbol from the stack
+        // and check if it matches the closing symbol
+        else if (c == '}' || c == ']' || c == ')') {
+            if (stack.isEmpty()) {
+                return false;
+            }
+            char top = stack.pop();
+            if ((c == '}' && top != '{') || (c == ']' && top != '[') || (c == ')' && top != '(')) {
+                return false;
+            }
+        }
+    }
+
+    // If the stack is empty, the string is balanced
+    return stack.isEmpty();
+}
+```
+
+1.
+Pour la méthode `isBalanced`, on peut partitionner l'espace d'entrée dans les parties suvivantes: 
+    
+    Strings containing only grouping symbols:
+        Empty string: ""
+        Strings with balanced grouping symbols:
+            Single grouping symbol: "{}", "[]", "()"
+            Nested grouping symbols: "{[]}", "([])", "({})", "{()[]}", "([]{})"
+        Strings with unbalanced grouping symbols:
+            Missing opening symbol: "}", "]", ")", "}]", ")]"
+            Missing closing symbol: "{", "[", "(", "{[", "[("
+            Mismatched closing symbol: "{]", "[)", "(}", "{)[]", "[({})]", "([)]"
+            Additional closing symbol: "{}]", "()[}", "{[])", "{})[]"
+    Strings containing other symbols:
+        No grouping symbols: "Hello World !"
+        Strings with balanced grouping symbols:
+            Single grouping symbol: "{a}", "[a]", "(a)"
+            Nested grouping symbols: "{a[a]}", "(a[a])", "(a{a})", "{a(a)[a]}", "(a[a]{a})"
+        Strings with unbalanced grouping symbols:
+            Missing opening symbol: "a}", "a]a", ")a", "a}a]", "a)a]"
+            Missing closing symbol: "a{", "a[", "a(", "a{a[", "a[a("
+            Mismatched closing symbol: "{a]", "[a)", "(a}", "{a)[a]", "a[a(a{a}a)]", "a(a[a)]"
+            Additional closing symbol: "a{a}]", "a(a)[a}", "a{a[a])", "a{a}a)a[]"
+
+2.
+On obtient un coverage de 100%.
+
+3.
+On a trois predicat utilisant plus de 2 booléen: 
+
+```java
+c == '{' || c == '[' || c == '('
+```
+```java
+c == '}' || c == ']' || c == ')'
+```
+Pour tester les deux premiers prédicats, on teste : 
+
+    Missing opening symbol: "}", "]", ")" pour que un booléen soit vrai et "a" pour que il soit tous faux
+    Missing closing symbol: "{", "[", "(" pour que un booléen soit vrai et "a" pour que il soit tous faux
+    
+```java
+(c == '}' && top != '{') || (c == ']' && top != '[') || (c == ')' && top != '(')
+```
+Pour tester le predicat: 
+we need to test the following combinations of true/false values:
+    
+    "{}", "[]", "()" pour que un booléen soit vrai et "a" pour que il soit tous faux
+    
