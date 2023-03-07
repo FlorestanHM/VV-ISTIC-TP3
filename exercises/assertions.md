@@ -43,3 +43,26 @@ List<String> list2 = list1;
 assertEquals(list1, list2); // passes
 assertSame(list1, list2); // passes
 ```
+
+3.
+`fail()` est utile pour marquer que du code ne devrait pas être executer car une excepetion est attendu avant. 
+Il peut être également utile pour marquer que du code ne devrait pas être atteignable pour plusieurs autres raisons, par exemple: 
+```
+switch (a) {
+    case 1:
+        // do something
+        break;
+    case 2:
+        // do something
+        break;
+    default:
+        fail("Unreachable code");
+        break;
+}
+```
+`fail()` peut aussi être utilisé pour tester si les inputs sont valides, et donc si les tests sont bien utilisés. Tout en renvoyant un message d'erreur clair. 
+On peut également utiliser `fail()`pour marquer qu'une fonctionnalité n'est pas encore implementé. 
+
+En général, `fail()` permet de faire échouer le test car il se retrouve dans un état non attendu, en envoyant un message d'erreur clair.
+
+4.
