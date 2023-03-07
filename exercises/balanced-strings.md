@@ -104,3 +104,6 @@ we need to test the following combinations of true/false values:
     
     "{}", "[]", "()" pour que un booléen soit vrai et "a" pour que il soit tous faux
     
+4.
+![](https://codimd.math.cnrs.fr/uploads/upload_f01f0b7999400c549a5fc5801143c8ba.png)
+On obtient un score de mutation de 100%
