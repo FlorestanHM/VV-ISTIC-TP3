@@ -19,6 +19,9 @@ On ne peut pas comparer des floats avec un test d'égalité à cause des erreurs
 2.
 `assertEquals` compare la valeur de deux objets, tandis que `assertSame` compare si deux objets sont le même objet en mémoire.
 
+On a donc deux scénario: 
+
+- Résultat différent: 
 ```java
 List<String> list1 = new ArrayList<>();
 List<String> list2 = new ArrayList<>();
@@ -30,6 +33,7 @@ assertEquals(list1, list2); // passes
 assertSame(list1, list2); // fails
 ```
 
+- Même résultat: 
 ```java
 List<String> list1 = new ArrayList<>();
 list1.add("hello");
