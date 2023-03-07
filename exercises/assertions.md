@@ -16,3 +16,26 @@ Answer the following questions:
 
 On ne peut pas comparer des floats avec un test d'égalité à cause des erreurs d'approximation. Il est conseillé de comparé les floats avec des comparateurs : > ou <, et de fixer quelle précision on veut utiliser.
 
+2.
+`assertEquals` compare la valeur de deux objets, tandis que `assertSame` compare si deux objets sont le même objet en mémoire.
+
+```java
+List<String> list1 = new ArrayList<>();
+List<String> list2 = new ArrayList<>();
+
+list1.add("hello");
+list2.add("hello");
+
+assertEquals(list1, list2); // passes
+assertSame(list1, list2); // fails
+```
+
+```java
+List<String> list1 = new ArrayList<>();
+list1.add("hello");
+
+List<String> list2 = list1;
+
+assertEquals(list1, list2); // passes
+assertSame(list1, list2); // passes
+```
