@@ -53,3 +53,80 @@ Use the project in [tp3-date](../code/tp3-date) to complete this exercise.
 
 ## Answer
 
+1.
+On a créé deux fichiers csv: un fichier avec des dates valides et un fichier avec des dates invalides
+- Les valeurs valides (day, month, year):
+```
+1,1,-1
+1,2,0
+28,2,1
+29,4,2
+15,10,199
+15,10,200
+16,10,200
+14,11,200
+```
+- Valeurs invalides :
+```
+30,2,0
+31,4,0
+12,31,2023
+```
+
+Pour la méthode `compareTo` j'ai directement fait plusieurs assert avec tous les cas auquel j'ai pensé.
+- compareTo est négatif:
+```java
+Date date = new Date(15, 6, 23);
+
+Date posterieurDay = new Date(11, 1, 23);
+
+Date posterieurMonth = new Date(9, 2, 23);
+Date posterieurMonth2 = new Date(10, 2, 23);
+Date posterieurMonth3 = new Date(12, 2, 23);
+
+Date posterieurYear0 = new Date(9, 1, 24);
+Date posterieurYear1 = new Date(10, 1, 24);
+Date posterieurYear2 = new Date(11, 1, 24);
+
+Date posterieurYear3 = new Date(9, 2, 24);
+```
+- compareTo est nulle:
+```java
+Date date = new Date(10, 1, 23);
+Date other = new Date(10, 1, 23);
+```
+- compareTo est positif:
+```java
+Date date = new Date(15, 6, 23);
+
+Date anterieurDay = new Date(14, 6, 23);
+
+Date anterieurMonth = new Date(16, 5, 23);
+Date anterieurMonth2 = new Date(15, 5, 23);
+Date anterieurMonth3 = new Date(14, 5, 23);
+
+Date anterieurYear0 = new Date(16, 6, 22);
+Date anterieurYear1 = new Date(15, 6, 22);
+Date anterieurYear2 = new Date(14, 6, 22);
+```
+
+2.
+On a coverage de lignes de 86%.
+On peut rajouter une valeur :
+```
+31, 12, 25
+```
+Et on monte à 88% de coverage. Le code pas couvert n'est pas atteignable.
+
+3.
+On a un predicat avec plusieurs booléen : 
+```java
+month <= 12 && day > 0 && day <= numberOfDaysInMonth(month, year)
+```
+On rajoute un cas de teste pour pouvoir tester ces trois booléen séparement:
+```
+30,2,0
+12,31,2023
+-2,2,2024
+```
+
