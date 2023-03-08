@@ -145,3 +145,11 @@ On rajoute des cas de teste:
 ```
 
 4.
+On a un score de mutation de 59%
+![](https://codimd.math.cnrs.fr/uploads/upload_da9b8e76ff456d356ff86f9bc862fe4f.png)
+Pour tuer plus de mutants, on peut comparer les dates obtenus par `nextDate` et `previousDate`.
+
+On obtient un score de mutation de 86%
+![](https://codimd.math.cnrs.fr/uploads/upload_bebd52d69544b7f9eabbba8d6018daf1.png)
+
+On pourrait changer le code pour augmenter le score de mutation, mais ça ne fait pas de sens actuellement.

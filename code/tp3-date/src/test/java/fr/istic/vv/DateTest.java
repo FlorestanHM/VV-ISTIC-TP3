@@ -15,6 +15,7 @@ class DateTest {
             Date date = new Date(day, month, year);
             Date previousDate = date.previousDate();
             assertTrue(Date.isValidDate(previousDate.getDay(), previousDate.getMonth(), previousDate.getYear()));
+            assertTrue(date.compareTo(previousDate) > 0);
         } catch (Date.InvalidDateExcepetion invalidDateExcepetion) {
             fail("La date testée n'est pas valide");
         }
@@ -26,7 +27,9 @@ class DateTest {
         try {
             Date date = new Date(day, month, year);
             Date nextDate = date.nextDate();
+
             assertTrue(Date.isValidDate(nextDate.getDay(), nextDate.getMonth(), nextDate.getYear()));
+            assertTrue(date.compareTo(nextDate) < 0);
         } catch (Date.InvalidDateExcepetion invalidDateExcepetion) {
             fail("La date testée n'est pas valide");
         }
