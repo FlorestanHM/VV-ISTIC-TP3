@@ -119,7 +119,7 @@ On peut rajouter une valeur :
 Et on monte à 88% de coverage. Le code pas couvert n'est pas atteignable.
 
 3.
-On a un predicat avec plusieurs booléen : 
+On a deux predicat avec plusieurs booléen : 
 ```java
 month <= 12 && day > 0 && day <= numberOfDaysInMonth(month, year)
 ```
@@ -130,3 +130,18 @@ On rajoute un cas de teste pour pouvoir tester ces trois booléen séparement:
 -2,2,2024
 ```
 
+```java
+(year % 4 == 0) && (year % 100 != 0 || year % 400 == 0)
+```
+On rajoute des cas de teste:
+- valide: 
+```
+29,2,400
+29,2,52
+```
+- invalide:
+```
+29,2,200
+```
+
+4.
