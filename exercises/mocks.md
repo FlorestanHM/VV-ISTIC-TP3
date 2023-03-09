@@ -9,3 +9,7 @@ Rewrite these tests with the help of Mockito.
 The initial tests fail to completely test the `TLSSockeetFactory`. In fact, if we *entirely* remove the code inside the body of `prepareSocket` no test case fails.
 
 Propose a solution to this problem in your new Mockito-based test cases.
+
+## Answer
+
+Avec la classe de test `TLSSocketFactoryTestMocks`, on peut vérifier que les appels sont bien faits. Donc si on enlève le code dans la méthode `prepareSocket` le teste fail.
